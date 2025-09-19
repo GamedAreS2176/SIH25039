@@ -19,6 +19,10 @@ This project is a **web + mobile platform** designed to complement **INCOIS** (I
 
 ---
 
+<h2>📸 UI Preview</h2>
+<img src="./ui.png" alt="App UI" width="600"/>
+
+---
 ## 🚀 Features
 
 * 🌍 **Geotagged citizen reports** with photo/video upload
