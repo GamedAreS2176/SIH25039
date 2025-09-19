@@ -20,7 +20,10 @@ This project is a **web + mobile platform** designed to complement **INCOIS** (I
 ---
 
 <h2>📸 UI Preview</h2>
-<img src="./Screenshot from 2025-09-19 18-53-23.png" alt="App UI" width="600"/>
+
+<p align="center">
+  <img src="./Screenshot from 2025-09-19 18-53-23.png" alt="App UI" width="800"/>
+</p>
 
 ---
 ## 🚀 Features
