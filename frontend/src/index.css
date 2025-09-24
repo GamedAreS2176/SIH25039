@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom styles for the map */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
+
+/* Custom marker styles */
+.hazard-marker {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.hazard-marker.tsunami {
+  background-color: #dc2626;
+}
+
+.hazard-marker.storm_surge {
+  background-color: #ea580c;
+}
+
+.hazard-marker.high_waves {
+  background-color: #d97706;
+}
+
+.hazard-marker.flooding {
+  background-color: #2563eb;
+}
+
+.hazard-marker.other {
+  background-color: #6b7280;
+}
+
+/* Hotspot styles */
+.hotspot-marker {
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  opacity: 0.7;
+}
+
+.hotspot-marker.low {
+  background-color: #10b981;
+}
+
+.hotspot-marker.medium {
+  background-color: #f59e0b;
+}
+
+.hotspot-marker.high {
+  background-color: #f97316;
+}
+
+.hotspot-marker.critical {
+  background-color: #dc2626;
+}
+
+/* Dashboard styles */
+.dashboard-card {
+  @apply bg-white rounded-lg shadow-md p-6;
+}
+
+.stat-card {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg p-4;
+}
+
+.hazard-card {
+  @apply border-l-4 border-blue-500 bg-white p-4 rounded-r-lg shadow-sm;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}

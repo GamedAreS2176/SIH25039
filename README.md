@@ -1,208 +1,294 @@
-Ocean Hazard Reporting Platform - SIH 2025
-Problem Statement ID: 25039
-Team: Data Dolphins
-Theme: Disaster Management
+# Data Dolphins - Ocean Hazard Monitoring Platform
 
-📋 Project Description
-An integrated mobile and web platform that combines crowdsourced ocean hazard reporting with social media analytics to create a real-time, dynamic situational awareness dashboard. The system enables citizens to report ocean hazards while providing authorities with comprehensive risk intelligence through multi-source data fusion.
+A comprehensive platform for real-time ocean hazard monitoring using crowdsourced reports and social media analytics, developed for Smart India Hackathon 2025.
 
-Key Features
-Citizen Hazard Reporting: Geotagged reports with photos/videos and timestamp validation
-Social Media Monitoring: NLP-powered hazard detection and sentiment analysis
-Dynamic Hotspot Detection: Real-time hazard intensity mapping using H3 spatial indexing
-Role-Based Access: Differentiated access for citizens, officials, and analysts
-Offline-First Architecture: Offline reporting with auto-sync capabilities
-Multilingual Support: Regional language support with voice reporting options
-INCOIS Integration: Seamless integration with existing warning systems
-🛠️ Tech Stack
-Frontend
-Web: React with Leaflet/OpenLayers for mapping
-Mobile: React Native
-UI Components: Material-UI/Native Base
-Backend
-API Server: Node.js with Express
-ML Pipeline: FastAPI (Python)
-Database: PostgreSQL with PostGIS extension
-Spatial Indexing: H3 Spatial Indexing
-Services & Tools
-Cloud Platform: Google Cloud Platform
-Authentication: Firebase Auth
-Storage: Firebase Storage
-Real-time Updates: Firebase Realtime Database
-NLP Processing: spaCy
-Mapping: Leaflet, OpenLayers
-Containerization: Docker
-🔧 Setup Instructions
-Prerequisites
-Node.js (v16 or higher)
-Python 3.8+
-PostgreSQL with PostGIS
-Firebase project
-Google Cloud Platform account
-Firebase Configuration
-Create a Firebase project at Firebase Console
-Enable Authentication, Firestore, and Storage services
-Generate Firebase config object
-Create a .env file in the root directory:
-env
-# Firebase Config
-REACT_APP_FIREBASE_API_KEY=your_api_key
-REACT_APP_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-REACT_APP_FIREBASE_PROJECT_ID=your_project_id
-REACT_APP_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-REACT_APP_FIREBASE_APP_ID=your_app_id
+## 🐬 Overview
 
+Data Dolphins is an integrated software platform that enables citizens, coastal residents, volunteers, and disaster managers to report observations during hazardous ocean events and monitor public communication trends via social media. The platform provides real-time monitoring, early warning integration, and comprehensive analytics for ocean hazard management.
+
+## ✨ Features
+
+### 🚨 Real-time Hazard Monitoring
+- **Citizen Reporting**: Mobile and web apps for geotagged hazard reports with photos/videos
+- **Social Media Integration**: Real-time monitoring of Twitter, Facebook, YouTube for hazard discussions
+- **Interactive Dashboard**: Dynamic map visualization with hotspots and filtering
+- **NLP Processing**: Automated hazard detection and sentiment analysis
+
+### 🚨 Early Warning Systems
+- **INCOIS Integration**: Connection with Indian National Centre for Ocean Information Services
+- **Automated Alerts**: Real-time notifications to users in affected zones
+- **Risk Assessment**: AI-powered risk scoring based on multiple data sources
+
+### 🌐 Multi-platform Access
+- **Web Dashboard**: React-based interactive dashboard with real-time updates
+- **Mobile App**: React Native app with offline sync capabilities
+- **Multilingual Support**: Regional language accessibility
+- **Role-based Access**: Different interfaces for citizens, analysts, and officials
+
+## 🏗️ Architecture
+
+### Backend Services
+- **FastAPI Backend**: RESTful API with PostgreSQL + PostGIS for spatial data
+- **NLP Engine**: Social media processing with spaCy and machine learning
+- **Redis**: Real-time data caching and pub/sub messaging
+- **Celery**: Background task processing
+
+### Frontend Applications
+- **React Dashboard**: Interactive web interface with Leaflet maps
+- **React Native Mobile**: Cross-platform mobile app with offline capabilities
+- **Real-time Updates**: WebSocket connections for live data
+
+### Data Processing
+- **Spatial Analysis**: H3 indexing for efficient geospatial queries
+- **Machine Learning**: Hazard detection and sentiment analysis
+- **Social Media APIs**: Twitter, Facebook, YouTube integration
+- **Alert System**: Multi-channel notification delivery
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Docker and Docker Compose
+- Node.js (for mobile app development)
+- Python 3.11+ (for local development)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/GamedAreS2176/SIH25039.git
+   cd SIH25039
+   ```
+
+2. **Run the setup script**
+   ```bash
+   ./scripts/setup.sh
+   ```
+
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your API keys and configuration
+   ```
+
+4. **Start the services**
+   ```bash
+   docker-compose up -d
+   ```
+
+### Access the Application
+
+- **Web Dashboard**: http://localhost:3000
+- **Backend API**: http://localhost:8000
+- **API Documentation**: http://localhost:8000/docs
+- **NLP Service**: http://localhost:8001
+
+### Mobile App Development
+
+```bash
+cd mobile
+npm install
+npm start
+```
+
+## 🧪 Testing
+
+Run the test suite to verify all components:
+
+```bash
+./scripts/test.sh
+```
+
+## 📱 Mobile App Features
+
+### Offline Capabilities
+- **Offline Reporting**: Submit reports without internet connection
+- **Automatic Sync**: Sync reports when connection is restored
+- **Local Storage**: SQLite database for offline data
+- **Background Sync**: Automatic synchronization in background
+
+### User Experience
+- **Intuitive Interface**: Easy-to-use reporting forms
+- **Location Services**: Automatic GPS location detection
+- **Media Upload**: Photo and video capture with compression
+- **Push Notifications**: Real-time alert delivery
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Key configuration options in `.env`:
+
+```env
 # Database
-DATABASE_URL=postgresql://username:password@localhost:5432/ocean_hazards
-POSTGIS_VERSION=3.2
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/ocean_hazards
 
-# API Keys
-SOCIAL_MEDIA_API_KEY=your_social_media_api_key
-INCOIS_API_ENDPOINT=your_incois_endpoint
+# Social Media APIs
+TWITTER_API_KEY=your_twitter_api_key
+FACEBOOK_ACCESS_TOKEN=your_facebook_token
+YOUTUBE_API_KEY=your_youtube_key
 
-# Server Config
-NODE_ENV=development
-PORT=3000
-API_PORT=5000
-ML_API_PORT=8000
-Installation & Setup
-Clone the repository
-bash
-git clone https://github.com/GamedAreS2176/SIH25039.git
-cd SIH25039
-Install dependencies
-bash
-# Install root dependencies
-npm install
+# INCOIS Integration
+INCOIS_BASE_URL=https://www.incois.gov.in
+INCOIS_API_KEY=your_incois_key
 
-# Install web app dependencies
-cd web-app
-npm install
+# Notification Services
+TWILIO_ACCOUNT_SID=your_twilio_sid
+SMTP_SERVER=smtp.gmail.com
+```
 
-# Install mobile app dependencies  
-cd ../mobile-app
-npm install
+### API Keys Setup
 
-# Install backend dependencies
-cd ../backend
-npm install
+1. **Twitter API**: Get keys from Twitter Developer Portal
+2. **Facebook API**: Create app in Facebook Developers
+3. **YouTube API**: Enable YouTube Data API v3
+4. **INCOIS**: Contact INCOIS for API access
+5. **Twilio**: Sign up for SMS notifications
+6. **Firebase**: Setup for push notifications
 
-# Install ML pipeline dependencies
-cd ../ml-pipeline
-pip install -r requirements.txt
-Database Setup
-bash
-# Create PostgreSQL database with PostGIS
-createdb ocean_hazards
-psql -d ocean_hazards -c "CREATE EXTENSION postgis;"
+## 🗄️ Database Schema
 
-# Run database migrations
-cd backend
-npm run migrate
-Configure Firebase
-bash
-# Install Firebase CLI
-npm install -g firebase-tools
+### Core Tables
+- **users**: User accounts with role-based access
+- **hazard_reports**: Citizen-submitted hazard reports
+- **social_media_posts**: Processed social media content
+- **hotspots**: Dynamic hazard hotspots
+- **alerts**: System and INCOIS alerts
+- **user_alerts**: User-specific alert notifications
 
-# Login to Firebase
-firebase login
+### Spatial Features
+- **PostGIS**: Advanced geospatial queries
+- **H3 Indexing**: Efficient spatial clustering
+- **Geofencing**: Location-based alert delivery
 
-# Initialize Firebase in your project
-firebase init
-🚀 Running the Application
-Development Mode
-Start all services concurrently:
+## 🔄 Data Flow
 
-bash
-npm run dev:all
-Or start services individually:
+1. **Data Collection**
+   - Citizens submit reports via mobile/web apps
+   - Social media APIs collect relevant posts
+   - INCOIS provides official warnings
 
-bash
-# Start web application (Port: 3000)
-npm run dev:web
+2. **Processing**
+   - NLP engine analyzes social media content
+   - Spatial analysis identifies hotspots
+   - Risk assessment algorithms evaluate threats
 
-# Start mobile application
-npm run dev:mobile
+3. **Visualization**
+   - Real-time dashboard updates
+   - Interactive map with filtering
+   - Statistical charts and trends
 
-# Start backend API server (Port: 5000)
-npm run dev:backend
+4. **Alerting**
+   - Automated alert generation
+   - Multi-channel notifications
+   - Integration with emergency services
 
-# Start ML pipeline (Port: 8000)
-npm run dev:ml
+## 🚨 Alert System
 
-# Start database
-npm run db:start
-Production Build
-bash
-# Build web application
-npm run build:web
+### Alert Types
+- **Tsunami Warnings**: Based on seismic data and reports
+- **Storm Surge Alerts**: Weather-based predictions
+- **High Wave Warnings**: Oceanographic conditions
+- **Flooding Alerts**: Coastal inundation risks
 
-# Build mobile application
-npm run build:mobile
+### Notification Channels
+- **Email**: Detailed alert information
+- **SMS**: Critical alerts via Twilio
+- **Push Notifications**: Mobile app alerts
+- **Web Dashboard**: Real-time updates
 
-# Build and deploy
-npm run deploy
-📱 Mobile App Development
-bash
-cd mobile-app
+## 🌍 Multilingual Support
 
-# For iOS
-npx react-native run-ios
+Supported languages:
+- English (default)
+- Hindi (हिंदी)
+- Tamil (தமிழ்)
+- Telugu (తెలుగు)
+- Bengali (বাংলা)
 
-# For Android
-npx react-native run-android
+## 🔒 Security Features
 
-# Build APK
-cd android && ./gradlew assembleRelease
-🧪 Testing
-bash
-# Run all tests
-npm run test
+- **JWT Authentication**: Secure API access
+- **Role-based Authorization**: Different access levels
+- **Data Encryption**: Sensitive data protection
+- **Input Validation**: SQL injection prevention
+- **Rate Limiting**: API abuse protection
 
-# Run specific test suites
-npm run test:web
-npm run test:mobile
-npm run test:backend
-npm run test:ml
-🐳 Docker Setup
-bash
-# Build and run with Docker Compose
-docker-compose up --build
+## 📊 Analytics & Reporting
 
-# Run in production mode
-docker-compose -f docker-compose.prod.yml up
-📊 API Documentation
-Backend API: http://localhost:5000/api/docs
-ML Pipeline API: http://localhost:8000/docs
-🔒 Authentication
-The platform uses Firebase Authentication with role-based access:
+### Dashboard Metrics
+- **Report Statistics**: By type, severity, location
+- **Social Media Trends**: Sentiment analysis
+- **Hotspot Analysis**: Geographic clustering
+- **Alert Effectiveness**: Response times and coverage
 
-Citizens: Report hazards and view public information
-Officials: Verify reports and manage alerts
-Analysts: Access analytics and trend data
-📈 Monitoring & Analytics
-Real-time dashboard at http://localhost:3000/dashboard
-API metrics at http://localhost:5000/metrics
-ML model performance at http://localhost:8000/metrics
-🌍 Multilingual Support
-The platform supports multiple regional languages:
+### Export Options
+- **CSV Reports**: Data export for analysis
+- **PDF Summaries**: Executive reports
+- **API Access**: Programmatic data retrieval
 
-Hindi, Tamil, Telugu, Bengali, Marathi
-Voice-to-text reporting
-Text-to-speech alerts
-🤝 Contributing
-Fork the repository
-Create a feature branch (git checkout -b feature/amazing-feature)
-Commit changes (git commit -m 'Add amazing feature')
-Push to branch (git push origin feature/amazing-feature)
-Open a Pull Request
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 🚀 Deployment
 
-🏆 Smart India Hackathon 2025
-This project is developed for Smart India Hackathon 2025 under the Disaster Management theme, addressing Problem Statement 25039 for creating an integrated platform for crowdsourced ocean hazard reporting and social media analytics.
+### Production Deployment
 
-📞 Support
-For support and queries, please contact the Data Dolphins team or create an issue in the repository.
+1. **Cloud Infrastructure**
+   ```bash
+   # AWS/GCP/Azure deployment
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
 
+2. **Environment Configuration**
+   ```bash
+   # Set production environment variables
+   export NODE_ENV=production
+   export DATABASE_URL=your_production_db_url
+   ```
+
+3. **SSL/TLS Setup**
+   ```bash
+   # Configure HTTPS certificates
+   # Update nginx configuration
+   ```
+
+### Scaling Considerations
+
+- **Horizontal Scaling**: Multiple API instances
+- **Database Optimization**: Read replicas and caching
+- **CDN Integration**: Static asset delivery
+- **Load Balancing**: Traffic distribution
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests for new functionality
+5. Submit a pull request
+
+## 📄 License
+
+This project is developed for Smart India Hackathon 2025. See the problem statement for detailed requirements.
+
+## 🆘 Support
+
+For technical support or questions:
+- **GitHub Issues**: Report bugs and feature requests
+- **Documentation**: Check the `/docs` directory
+- **API Reference**: Available at `/docs` endpoint
+
+## 🎯 Roadmap
+
+### Phase 1 (Current)
+- ✅ Core platform development
+- ✅ Mobile app with offline sync
+- ✅ Social media integration
+- ✅ INCOIS integration
+
+### Phase 2 (Future)
+- 🔄 AI-powered risk prediction
+- 🔄 Advanced analytics dashboard
+- 🔄 Integration with more agencies
+- 🔄 International expansion
+
+---
+
+**Data Dolphins** - Making ocean safety accessible to everyone! 🐬🌊
